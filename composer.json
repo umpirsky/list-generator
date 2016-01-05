@@ -1,0 +1,27 @@
+{
+    "name": "umpirsky/list-generator",
+    "type": "library",
+    "description": "Export data to various formats.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Saša Stamenković",
+            "email": "umpirsky@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "~5.4"
+    },
+    "require-dev": {
+        "symfony/console":              "^2.7|^3.0",
+        "symfony/filesystem":           "^2.7|^3.0",
+        "symfony/finder":               "^2.7|^3.0",
+        "symfony/yaml":                 "^2.7|^3.0",
+        "doctrine/dbal":                "~2.5"
+    },
+    "autoload": {
+        "psr-0": {
+            "Umpirsky\\Country": "src/"
+        }
+    }
+}
