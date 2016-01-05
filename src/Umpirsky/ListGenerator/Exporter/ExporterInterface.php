@@ -1,6 +1,6 @@
 <?php
 
-namespace Umpirsky\Country\Exporter;
+namespace Umpirsky\ListGenerator\Exporter;
 
 interface ExporterInterface
 {

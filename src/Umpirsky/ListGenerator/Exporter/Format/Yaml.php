@@ -1,8 +1,8 @@
 <?php
 
-namespace Umpirsky\Country\Exporter\Format;
+namespace Umpirsky\ListGenerator\Exporter\Format;
 
-use Umpirsky\Country\Exporter\Exporter;
+use Umpirsky\ListGenerator\Exporter\Exporter;
 use Symfony\Component\Yaml\Yaml as SymfonyYaml;
 
 class Yaml extends Exporter

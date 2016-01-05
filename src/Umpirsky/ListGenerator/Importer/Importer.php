@@ -1,6 +1,6 @@
 <?php
 
-namespace Umpirsky\Country\Importer;
+namespace Umpirsky\ListGenerator\Importer;
 
 abstract class Importer implements ImporterInterface
 {
@@ -11,9 +11,6 @@ abstract class Importer implements ImporterInterface
      */
     public function getSource()
     {
-        $className = get_class($this);
-
-        return strtolower(substr($className, strrpos($className, '\\') + 1));
+        return strtolower(get_class($this));
     }
-
 }

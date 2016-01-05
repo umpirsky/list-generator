@@ -1,9 +1,9 @@
 <?php
 
-namespace Umpirsky\Country\Builder;
+namespace Umpirsky\ListGenerator\Builder;
 
 use Symfony\Component\Console\Application;
-use Umpirsky\Country\Importer\ImporterInterface;
+use Umpirsky\ListGenerator\Importer\ImporterInterface;
 
 class Builder extends Application
 {

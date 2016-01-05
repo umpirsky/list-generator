@@ -1,8 +1,8 @@
 <?php
 
-namespace Umpirsky\Country\Exporter;
+namespace Umpirsky\ListGenerator\Exporter;
 
-use Umpirsky\Country\Exporter\Exporter;
+use Umpirsky\ListGenerator\Exporter\Exporter;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Schema\Table;

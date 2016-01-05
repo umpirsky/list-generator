@@ -1,8 +1,8 @@
 <?php
 
-namespace Umpirsky\Country\Exporter\Format;
+namespace Umpirsky\ListGenerator\Exporter\Format;
 
-use Umpirsky\Country\Exporter\HtmlExporter;
+use Umpirsky\ListGenerator\Exporter\HtmlExporter;
 
 class Html extends HtmlExporter
 {

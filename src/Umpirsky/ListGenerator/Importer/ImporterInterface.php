@@ -1,6 +1,6 @@
 <?php
 
-namespace Umpirsky\Country\Importer;
+namespace Umpirsky\ListGenerator\Importer;
 
 interface ImporterInterface
 {

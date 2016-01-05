@@ -1,6 +1,6 @@
 <?php
 
-namespace Umpirsky\Country\Exporter;
+namespace Umpirsky\ListGenerator\Exporter;
 
 use Symfony\Component\Finder\Finder;
 
@@ -22,7 +22,7 @@ class Iterator implements \Iterator
 
         $this->exporters = array();
         foreach ($iterator as $file) {
-            $exporterClassName = '\\Umpirsky\\Country\\Exporter\\Format\\'.strstr($file->getFilename(), '.', true);
+            $exporterClassName = '\\Umpirsky\\ListGenerator\\Exporter\\Format\\'.strstr($file->getFilename(), '.', true);
             $this->attach(new $exporterClassName());
         }
 

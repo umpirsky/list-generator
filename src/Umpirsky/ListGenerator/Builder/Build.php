@@ -1,6 +1,6 @@
 <?php
 
-namespace Umpirsky\Country\Builder;
+namespace Umpirsky\ListGenerator\Builder;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -8,8 +8,8 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
-use Umpirsky\Country\Exporter\Iterator as ExporterIterator;
-use Umpirsky\Country\Importer\ImporterInterface;
+use Umpirsky\ListGenerator\Exporter\Iterator as ExporterIterator;
+use Umpirsky\ListGenerator\Importer\ImporterInterface;
 
 class Build extends Command
 {
@@ -69,7 +69,7 @@ class Build extends Command
         $this->filesystem = new Filesystem();
         $this->filesystem->mkdir($this->path);
 
-        $this->filesystem->mkdir($importerDir = $this->path.'/'.$this->importer->getSource());
+        $this->filesystem->mkdir($importerDir = $this->path);
         foreach ($this->importer->getLanguages() as $language) {
             if (null === $input->getArgument('language') || $input->getArgument('language') === $language) {
                 $this->filesystem->mkdir($exporterDir = $importerDir.'/'.$language);

@@ -1,8 +1,8 @@
 <?php
 
-namespace Umpirsky\Country\Exporter\Format;
+namespace Umpirsky\ListGenerator\Exporter\Format;
 
-use Umpirsky\Country\Exporter\SqlExporter;
+use Umpirsky\ListGenerator\Exporter\SqlExporter;
 
 class PostgreSql extends SqlExporter
 {
