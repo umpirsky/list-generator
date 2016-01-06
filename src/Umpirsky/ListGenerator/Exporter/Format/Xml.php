@@ -11,15 +11,15 @@ class Xml extends Exporter
      */
     public function export(array $data)
     {
-        $countriesElement = new SimpleXMLExtended("<?xml version=\"1.0\" encoding=\"utf-8\"?><countries/>");
+        $collectionElement = new SimpleXMLExtended("<?xml version=\"1.0\" encoding=\"utf-8\"?><values/>");
 
         foreach ($data as $iso => $name) {
-            $countryElement = $countriesElement->addChild('country');
-            $countryElement->addChild('iso', $iso);
-            $countryElement->addChild('name', $countryElement->addCData($name));
+            $element = $collectionElement->addChild('item');
+            $element->addChild('id', $iso);
+            $element->addChild('value', $element->addCData($name));
         }
 
-        return $countriesElement->asXML();
+        return $collectionElement->asXML();
     }
 }
 

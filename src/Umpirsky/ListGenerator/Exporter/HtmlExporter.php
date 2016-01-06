@@ -99,7 +99,7 @@ abstract class HtmlExporter extends Exporter
         $metahttp->setAttribute('http-equiv', 'Content-Type');
         $metahttp->setAttribute('content', 'text/html; charset=utf-8');
         $head->appendChild($metahttp);
-        $head->appendChild($this->getDocument()->createElement('title', 'Country List'));
+        $head->appendChild($this->getDocument()->createElement('title', 'Generated List'));
 
         foreach ($this->getStylesheets() as $href) {
             $stylesheet = $this->getDocument()->createElement('link');

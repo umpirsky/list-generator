@@ -11,7 +11,7 @@ use Zend\Db\Sql\Insert;
 
 abstract class SqlExporter extends Exporter
 {
-    const TABLE_NAME = 'country';
+    const TABLE_NAME = 'list';
 
     private $connections = [];
 
@@ -79,7 +79,7 @@ abstract class SqlExporter extends Exporter
         $table = new Table(self::TABLE_NAME, array(), array(), array(), false, array());
         $table->addColumn('id', 'string', array('length' => 2, 'notnull' => true));
         $table->setPrimaryKey(array('id'));
-        $table->addColumn('name', 'string', array('length' => 64));
+        $table->addColumn('value', 'string', array('length' => 64));
 
         return array_pop($this->getConnection()
             ->getDatabasePlatform()
@@ -97,9 +97,9 @@ abstract class SqlExporter extends Exporter
     {
         $insertSql = '';
         $insert = new Insert(self::TABLE_NAME);
-        foreach ($data as $iso => $name) {
+        foreach ($data as $id => $value) {
             $insertSql .= @$insert
-                ->values(array('id' => $iso, 'name' => $name))
+                ->values(array('id' => $id, 'value' => $value))
                 ->getSqlString($this->getPlatform()).';'.PHP_EOL;
         }
 

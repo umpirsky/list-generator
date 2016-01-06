@@ -12,7 +12,7 @@ class Csv extends Exporter
     public function export(array $data)
     {
         $outstream = fopen('php://temp', 'r+');
-        fputcsv($outstream, array('iso', 'name'));
+        fputcsv($outstream, array('id', 'value'));
         foreach ($data as $iso => $name) {
             fputcsv($outstream, array($iso, $name));
         }

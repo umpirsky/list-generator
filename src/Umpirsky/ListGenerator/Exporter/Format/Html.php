@@ -12,13 +12,13 @@ class Html extends HtmlExporter
     public function export(array $data)
     {
         $selectElement = $this->getDocument()->createElement('select');
-        $selectElement->setAttribute('name', 'country');
-        foreach ($data as $iso => $name) {
+        $selectElement->setAttribute('name', 'value');
+        foreach ($data as $id => $name) {
             $optionElement = $this->getDocument()->createElement(
                 'option',
                 htmlentities($name)
             );
-            $optionElement->setAttribute('value', $iso);
+            $optionElement->setAttribute('value', $id);
             $selectElement->appendChild($optionElement);
         }
 
