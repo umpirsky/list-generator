@@ -77,7 +77,7 @@ abstract class SqlExporter extends Exporter
     protected function exportCreateTable()
     {
         $table = new Table(self::TABLE_NAME, array(), array(), array(), false, array());
-        $table->addColumn('id', 'string', array('length' => 2, 'notnull' => true));
+        $table->addColumn('id', 'string', array('length' => 3, 'notnull' => true));
         $table->setPrimaryKey(array('id'));
         $table->addColumn('value', 'string', array('length' => 64));
 
