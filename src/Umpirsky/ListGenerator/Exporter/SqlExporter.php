@@ -81,10 +81,12 @@ abstract class SqlExporter extends Exporter
         $table->setPrimaryKey(array('id'));
         $table->addColumn('value', 'string', array('length' => 64));
 
-        return array_pop($this->getConnection()
+        $sql = $this->getConnection()
             ->getDatabasePlatform()
             ->getCreateTableSQL($table, AbstractPlatform::CREATE_INDEXES)
-        ).';'.PHP_EOL;
+        ;
+
+        return array_pop($sql).';'.PHP_EOL;
     }
 
     /**
@@ -110,7 +112,11 @@ abstract class SqlExporter extends Exporter
     {
         if (!isset($this->connections[$this->getDriver()])) {
             $this->connections[$this->getDriver()] = DriverManager::getConnection(
-                array('driver' => $this->getDriver())
+                array(
+                    'driver' => $this->getDriver(),
+                    // 'user' => '****',
+                    // 'password' => '****',
+                )
             );
         }
 
