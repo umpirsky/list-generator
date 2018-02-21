@@ -5,19 +5,15 @@ namespace Umpirsky\ListGenerator;
 use Umpirsky\ListGenerator\Builder\Builder;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Tester\CommandTester;
+use Umpirsky\ListGenerator\Exporter\Iterator as ExportIterator;
 use PHPUnit\Framework\TestCase;
 
 class BuildCommandTest extends TestCase
 {
     /**
-     * @var commandTester
+     * @var CommandTester
      */
     private $commandTester;
-
-    /**
-     * @var vfsStreamDirectory
-     */
-    private $vfsDirectory;
 
     protected function setUp()
     {
@@ -29,103 +25,43 @@ class BuildCommandTest extends TestCase
 
     protected function tearDown()
     {
-        $format = ['json', 'csv', 'html', 'txt', 'xliff', 'xml', 'yaml', 'php'];
-        foreach($format as $formatName) {
-            $importerFile = glob(__DIR__.'/../importer_path/en/*.'.$formatName);
+        $exportIterator = new ExportIterator();
+        foreach ($exportIterator as $exporter) {
+            $importerFile = glob(__DIR__.'/../importer_path/en/*.'.$exporter->getFormat());
             foreach($importerFile as $file) {
-                @unlink($file);
+                file_exists($file) ? unlink($file) : false;
             }
         }
 
-        @rmdir(__DIR__.'/../importer_path/en');
-        @rmdir(__DIR__.'/../importer_path');
+        rmdir(__DIR__.'/../importer_path/en');
+        rmdir(__DIR__.'/../importer_path');
     }
 
-    public function testBuildCommandWithFormatJson()
+    /**
+     * @dataProvider argumentDataProvider
+     */
+    public function testBuildCommand($language, $format)
     {
         $this->commandTester->execute([
-            'language' => 'en',
-            'format' => 'json'
+            'language' => $language,
+            'format' => $format,
         ]);
 
         $this->assertSame(0, $this->commandTester->getStatusCode());
         $this->assertContains('', $this->commandTester->getDisplay());
     }
 
-    public function testBuildCommandWithFormatCsv()
+    public function argumentDataProvider()
     {
-        $this->commandTester->execute([
-            'language' => 'en',
-            'format' => 'csv'
-        ]);
-
-        $this->assertSame(0, $this->commandTester->getStatusCode());
-        $this->assertContains('', $this->commandTester->getDisplay());
-    }
-
-    public function testBuildCommandWithFormatHtml()
-    {
-        $this->commandTester->execute([
-            'language' => 'en',
-            'format' => 'html'
-        ]);
-
-        $this->assertSame(0, $this->commandTester->getStatusCode());
-        $this->assertContains('', $this->commandTester->getDisplay());
-    }
-
-    public function testBuildCommandWithFormatPhp()
-    {
-        $this->commandTester->execute([
-            'language' => 'en',
-            'format' => 'php'
-        ]);
-
-        $this->assertSame(0, $this->commandTester->getStatusCode());
-        $this->assertContains('', $this->commandTester->getDisplay());
-    }
-
-    public function testBuildCommandWithFormatTxt()
-    {
-        $this->commandTester->execute([
-            'language' => 'en',
-            'format' => 'txt'
-        ]);
-
-        $this->assertSame(0, $this->commandTester->getStatusCode());
-        $this->assertContains('', $this->commandTester->getDisplay());
-    }
-
-    public function testBuildCommandWithFormatXliff()
-    {
-        $this->commandTester->execute([
-            'language' => 'en',
-            'format' => 'xliff'
-        ]);
-
-        $this->assertSame(0, $this->commandTester->getStatusCode());
-        $this->assertContains('', $this->commandTester->getDisplay());
-    }
-
-    public function testBuildCommandWithFormatXml()
-    {
-        $this->commandTester->execute([
-            'language' => 'en',
-            'format' => 'xml'
-        ]);
-
-        $this->assertSame(0, $this->commandTester->getStatusCode());
-        $this->assertContains('', $this->commandTester->getDisplay());
-    }
-
-    public function testBuildCommandWithFormatYaml()
-    {
-        $this->commandTester->execute([
-            'language' => 'en',
-            'format' => 'yaml'
-        ]);
-
-        $this->assertSame(0, $this->commandTester->getStatusCode());
-        $this->assertContains('', $this->commandTester->getDisplay());
+        return [
+            ['en', 'json'],
+            ['en', 'csv'],
+            ['en', 'html'],
+            ['en', 'php'],
+            ['en', 'txt'],
+            ['en', 'xliff'],
+            ['en', 'xml'],
+            ['en', 'yaml'],
+        ];
     }
 }

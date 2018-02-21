@@ -13,11 +13,6 @@ class BuilderTest extends TestCase
      */
     private $builder;
 
-    /**
-     * @var vfsStreamDirectory
-     */
-    private $vfsDirectory;
-
     protected function setUp()
     {
         $this->builder = new Builder(new ImporterInstance(), 'importer_path');
