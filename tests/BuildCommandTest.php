@@ -15,6 +15,11 @@ class BuildCommandTest extends TestCase
      */
     private $commandTester;
 
+    /**
+     * @var ExportIterator
+     */
+    private $exportIterator;
+
     protected function setUp()
     {
         $builder = new Builder(new ImporterInstance(), 'importer_path');
@@ -25,8 +30,8 @@ class BuildCommandTest extends TestCase
 
     protected function tearDown()
     {
-        $exportIterator = new ExportIterator();
-        foreach ($exportIterator as $exporter) {
+        $this->exportIterator = new ExportIterator();
+        foreach ($this->exportIterator as $exporter) {
             $importerFile = glob(__DIR__.'/../importer_path/en/*.'.$exporter->getFormat());
             foreach($importerFile as $file) {
                 file_exists($file) ? unlink($file) : false;
@@ -48,7 +53,7 @@ class BuildCommandTest extends TestCase
         ]);
 
         $this->assertSame(0, $this->commandTester->getStatusCode());
-        $this->assertContains('', $this->commandTester->getDisplay());
+        $this->assertEmpty($this->commandTester->getDisplay());
     }
 
     public function argumentDataProvider()
