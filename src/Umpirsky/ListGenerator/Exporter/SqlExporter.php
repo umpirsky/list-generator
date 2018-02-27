@@ -108,14 +108,19 @@ abstract class SqlExporter extends Exporter
         return $insertSql;
     }
 
+    /**
+     * DB config matches docker config.
+     */
     private function getConnection()
     {
         if (!isset($this->connections[$this->getDriver()])) {
             $this->connections[$this->getDriver()] = DriverManager::getConnection(
                 array(
                     'driver' => $this->getDriver(),
-                    // 'user' => '****',
-                    // 'password' => '****',
+                    'host' => str_replace('pdo_', '', $this->getDriver()),
+                    'dbname' => 'list',
+                    'user' => 'list',
+                    'password' => 'list',
                 )
             );
         }
