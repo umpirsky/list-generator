@@ -121,6 +121,7 @@ abstract class SqlExporter extends Exporter
                     'dbname' => 'list',
                     'user' => 'list',
                     'password' => 'list',
+                    // 'unix_socket' => '/tmp/mysql.sock',
                 )
             );
         }
