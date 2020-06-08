@@ -11,6 +11,6 @@ class Json extends Exporter
      */
     public function export(array $data)
     {
-        return json_encode($data);
+        return json_encode($data, JSON_UNESCAPED_UNICODE);
     }
 }
