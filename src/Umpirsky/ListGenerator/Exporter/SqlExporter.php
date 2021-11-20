@@ -6,8 +6,8 @@ use Umpirsky\ListGenerator\Exporter\Exporter;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Schema\Table;
-use Zend\Db\Adapter\Platform;
-use Zend\Db\Sql\Insert;
+use Laminas\Db\Adapter\Platform;
+use Laminas\Db\Sql\Insert;
 
 abstract class SqlExporter extends Exporter
 {
@@ -41,32 +41,32 @@ abstract class SqlExporter extends Exporter
     /**
      * Gets platform.
      *
-     * @return \Zend\Db\Adapter\Platform\PlatformInterface
+     * @return Platform\PlatformInterface
      */
     public function getPlatform()
     {
         switch ($this->getDriver()) {
             case 'pdo_mysql':
-                return new Platform\Mysql();
+                $class =  new Platform\Mysql();
                 break;
 
             case 'pdo_pgsql':
-                return new Platform\Postgresql();
+                $class =   new Platform\Postgresql();
                 break;
 
             case 'pdo_sqlite':
-                return new Platform\Sqlite();
+                $class =   new Platform\Sqlite();
                 break;
 
             case 'pdo_sqlsrv':
-                return new Platform\SqlServer();
+                $class =   new Platform\SqlServer();
                 break;
 
             default:
-
-                throw new \Exception(sprintf('Unknown platform %s.', $this->getPlatform()));
-                break;
+                throw new \Exception(sprintf('Unknown platform %s.', $this->getPlatform()->getName()));
         }
+
+        return $class;
     }
 
     /**
@@ -76,7 +76,7 @@ abstract class SqlExporter extends Exporter
      */
     protected function exportCreateTable()
     {
-        $table = new Table(self::TABLE_NAME, array(), array(), array(), false, array());
+        $table = new Table(self::TABLE_NAME, array(), array(), array(), [], array());
         $table->addColumn('id', 'string', array('length' => 64, 'notnull' => true));
         $table->setPrimaryKey(array('id'));
         $table->addColumn('value', 'string', array('length' => 64));

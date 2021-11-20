@@ -18,4 +18,11 @@ interface ImporterInterface
      * @return string[]
      */
     public function getData($language);
+
+    /**
+     * Gets source name.
+     *
+     * @return string
+     */
+    public function getSource(): string;
 }
