@@ -2,12 +2,8 @@ name: PHPUnit - Upcoming Symfony versions
 
 on:
   push:
-    paths:
-      - 'Bundle/**'
-      - 'composer.json'
   pull_request:
     paths:
-      - 'Bundle/**'
       - 'composer.json'
       - '.github/workflows/phpunit_upcoming_symfony.yaml'
 
