@@ -16,14 +16,27 @@
         "symfony/finder": ">=3.0",
         "symfony/yaml": ">=3.0",
         "doctrine/dbal": ">=2.5",
-        "laminas/laminas-db": ">= 2.6"
+        "laminas/laminas-db": ">= 2.6",
+        "ext-dom": "*"
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": "true",
+            "require": "5.3.*"
+        }
     },
     "autoload": {
         "psr-0": {
-            "Umpirsky\\ListGenerator": "src/"
+            "Umpirsky\\ListGenerator\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Umpirsky\\ListGenerator\\": "tests/"
         }
     },
     "require-dev": {
-        "phpstan/phpstan": "^1.2"
+        "phpstan/phpstan": "^1.2",
+        "phpunit/phpunit": "^9.5"
     }
 }
