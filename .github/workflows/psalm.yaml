@@ -24,7 +24,6 @@ jobs:
       - name: 'Install project dependencies'
         run: |
           composer update --no-interaction --prefer-dist --optimize-autoloader --prefer-stable
-          vendor/bin/simple-phpunit install
 
       - name: Psalm
         run: |
