@@ -9,7 +9,7 @@ class Txt extends Exporter
     /**
      * {@inheritdoc}
      */
-    public function export(array $data): string
+    public function export(array $data)
     {
         $txt = '';
         foreach ($data as $id => $name) {

@@ -18,7 +18,7 @@ abstract class SqlExporter extends Exporter
     /**
      * {@inheritdoc}
      */
-    public function export(array $data): string
+    public function export(array $data)
     {
         return parent::getFormat().'.sql';
     }

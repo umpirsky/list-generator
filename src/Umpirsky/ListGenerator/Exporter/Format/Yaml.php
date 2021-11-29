@@ -10,7 +10,7 @@ class Yaml extends Exporter
     /**
      * {@inheritdoc}
      */
-    public function export(array $data): string
+    public function export(array $data)
     {
         return SymfonyYaml::dump($data);
     }

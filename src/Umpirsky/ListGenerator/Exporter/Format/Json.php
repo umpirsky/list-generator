@@ -9,7 +9,7 @@ class Json extends Exporter
     /**
      * {@inheritdoc}
      */
-    public function export(array $data): string
+    public function export(array $data)
     {
         return json_encode($data, JSON_UNESCAPED_UNICODE);
     }
