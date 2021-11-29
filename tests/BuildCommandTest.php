@@ -20,7 +20,7 @@ class BuildCommandTest extends TestCase
      */
     private $exportIterator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $builder = new Builder(new ImporterInstance(), 'importer_path');
         $command = $builder->get('build');
@@ -28,7 +28,7 @@ class BuildCommandTest extends TestCase
         $this->commandTester = new CommandTester($command);
     }
 
-    protected function tearDown()
+    protected function teardown(): void
     {
         $this->exportIterator = new ExportIterator();
         foreach ($this->exportIterator as $exporter) {

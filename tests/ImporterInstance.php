@@ -21,7 +21,7 @@ class ImporterInstance extends Importer
         }
     }
 
-    public function getSource()
+    public function getSource(): string
     {
         return strtolower(get_class($this));
     }

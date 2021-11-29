@@ -1,0 +1,19 @@
+name: Suggest an idea for this project
+description: Suggest an idea for this project
+labels: [Feature]
+
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Short description of wanted feature
+    validations:
+      required: true
+
+  - type: textarea
+    id: example
+    attributes:
+      label: Example
+      description: |
+        A simple example of the new feature in action (include PHP code, YAML config, etc.)

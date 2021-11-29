@@ -13,7 +13,7 @@ class BuilderTest extends TestCase
      */
     private $builder;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->builder = new Builder(new ImporterInstance(), 'importer_path');
     }

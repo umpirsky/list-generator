@@ -86,5 +86,7 @@ class Build extends Command
                 }
             }
         }
+
+        return self::SUCCESS;
     }
 }

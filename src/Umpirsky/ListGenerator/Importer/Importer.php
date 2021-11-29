@@ -9,7 +9,7 @@ abstract class Importer implements ImporterInterface
      *
      * @return string
      */
-    public function getSource()
+    public function getSource(): string
     {
         return strtolower(get_class($this));
     }

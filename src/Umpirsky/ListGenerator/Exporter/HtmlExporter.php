@@ -12,7 +12,7 @@ abstract class HtmlExporter extends Exporter
     protected $stylesheets = array();
 
     /**
-     * @var \DOMDocument
+     * @var ?\DOMDocument
      */
     protected $document;
 
