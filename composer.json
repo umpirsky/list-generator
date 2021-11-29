@@ -17,7 +17,8 @@
         "symfony/yaml": ">=3.0",
         "doctrine/dbal": ">=2.5",
         "laminas/laminas-db": ">= 2.6",
-        "ext-dom": "*"
+        "ext-dom": "*",
+      "ext-simplexml": "*"
     },
     "extra": {
         "symfony": {
@@ -36,8 +37,11 @@
         }
     },
     "require-dev": {
+        "ekino/phpstan-banned-code": "^1.0",
         "phpstan/phpstan": "^1.2",
+        "phpstan/phpstan-doctrine": "^1.0",
+        "phpstan/phpstan-symfony": "^1.0",
         "phpunit/phpunit": "^9.5",
-        "symfony/phpunit-bridge": "^5.3"
+        "vimeo/psalm": "^4.13"
     }
 }

@@ -2,12 +2,8 @@ name: PHPUnit - Upcoming Symfony versions
 
 on:
   push:
-    paths:
-      - 'Bundle/**'
-      - 'composer.json'
   pull_request:
     paths:
-      - 'Bundle/**'
       - 'composer.json'
       - '.github/workflows/phpunit_upcoming_symfony.yaml'
 
@@ -19,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        php-version: ['7.4', '8.0']
+        php-version: ['7.4', '8.0', '8.1']
         symfony-version: ['5.4', '6.0']
       fail-fast: false
 
@@ -41,9 +37,8 @@ jobs:
         run: |
           composer config minimum-stability RC
           composer update --no-interaction --prefer-dist --optimize-autoloader --no-progress
-          vendor/bin/simple-phpunit install
 
       - name: 'Run tests'
         env:
           SYMFONY_DEPRECATIONS_HELPER: 'max[indirect]=9999&max[direct]=0&max[self]=9999'
-        run: vendor/bin/simple-phpunit -v
+        run: vendor/bin/phpunit -v

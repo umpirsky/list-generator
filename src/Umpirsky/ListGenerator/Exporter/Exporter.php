@@ -4,7 +4,7 @@ namespace Umpirsky\ListGenerator\Exporter;
 
 abstract class Exporter implements ExporterInterface
 {
-    public function getFormat()
+    public function getFormat(): string
     {
         $className = get_class($this);
 
