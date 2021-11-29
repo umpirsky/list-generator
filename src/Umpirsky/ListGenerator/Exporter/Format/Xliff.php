@@ -16,7 +16,7 @@ class Xliff extends Exporter
     /**
      * {@inheritdoc}
      */
-    public function export(array $data)
+    public function export(array $data): string
     {
         $rootElement = new \SimpleXMLElement("<?xml version=\"1.0\"?><xliff version=\"1.2\" xmlns=\"urn:oasis:names:tc:xliff:document:1.2\"/>");
         $fileElement = $rootElement->addChild('file');

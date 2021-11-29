@@ -18,15 +18,7 @@ abstract class SqlExporter extends Exporter
     /**
      * {@inheritdoc}
      */
-    public function export(array $data)
-    {
-        return $this->exportCreateTable() . PHP_EOL . $this->exportInsert($data);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getFormat()
+    public function export(array $data): string
     {
         return parent::getFormat().'.sql';
     }

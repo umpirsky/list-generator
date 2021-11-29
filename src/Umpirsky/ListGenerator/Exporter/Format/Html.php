@@ -9,7 +9,7 @@ class Html extends HtmlExporter
     /**
      * {@inheritdoc}
      */
-    public function export(array $data)
+    public function export(array $data): string
     {
         $selectElement = $this->getDocument()->createElement('select');
         $selectElement->setAttribute('name', 'value');

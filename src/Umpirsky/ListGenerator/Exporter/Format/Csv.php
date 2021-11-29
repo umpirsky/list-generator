@@ -9,7 +9,7 @@ class Csv extends Exporter
     /**
      * {@inheritdoc}
      */
-    public function export(array $data)
+    public function export(array $data): string
     {
         $outstream = fopen('php://temp', 'r+');
         fputcsv($outstream, array('id', 'value'));
