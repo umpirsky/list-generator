@@ -24,4 +24,3 @@ class Xml extends Exporter
         return $collectionElement->asXML();
     }
 }
-

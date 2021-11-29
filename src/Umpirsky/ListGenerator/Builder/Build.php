@@ -46,9 +46,9 @@ class Build extends Command
         $this->path = $path;
     }
 
-   /**
-    * {@inheritdoc}
-    */
+    /**
+     * {@inheritdoc}
+     */
     protected function configure()
     {
         $this
@@ -60,9 +60,9 @@ class Build extends Command
         ;
     }
 
-   /**
-    * {@inheritdoc}
-    */
+    /**
+     * {@inheritdoc}
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->filesystem = new Filesystem();
